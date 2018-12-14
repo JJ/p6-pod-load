@@ -37,9 +37,7 @@ sub load ( $file where .IO.e ) is export {
     my $precomp = CompUnit::PrecompilationRepository::Default.new(store => $precomp-store);
     my $id = nqp::sha1(~$file);
     my $handle = $precomp.load($id)[0];
-
     without $handle {
-	say "No cache";
         $precomp.precompile($io, $id, :force);
         $handle = $precomp.load($id)[0] // fail("Could not precompile $file");
     }
