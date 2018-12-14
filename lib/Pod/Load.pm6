@@ -6,15 +6,18 @@ unit package Pod::Load:ver<0.0.1>;
 
 =head1 NAME
 
-Pod::Load - blah blah blah
+Pod::Load - Loads and compiles the Pod documentation of an external file
 
 =head1 SYNOPSIS
 
-  use Pod::Load;
+    use Pod::Load;
+
+    my $pod = load("file-with.pod6");
+    say $pod.perl; # Process it as a Pod
 
 =head1 DESCRIPTION
 
-Pod::Load is ...
+Pod::Load is a module with a simple task: obtain the documentation of an external file in a standard, straighworward way. Its mechanism is inspired by L<C<Pod::To::BigPage>|https://github.com/perl6/perl6-pod-to-bigpage>, from where the code to use the cache is taken from.
 
 =head1 AUTHOR
 
