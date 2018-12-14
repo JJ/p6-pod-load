@@ -32,6 +32,8 @@ This library is free software; you can redistribute it and/or modify it under th
 
 use nqp;
 
+$*TMPDIR.add('perl6-pod-load');
+
 #| Loads a file, returns a Pod. Taken from pod2onepage
 multi sub load ( $file where .IO.e ) is export {
     return load( $file.IO );
@@ -40,7 +42,6 @@ multi sub load ( $file where .IO.e ) is export {
 #| Loads a IO::Path, returns a Pod. Taken from pod2onepage
 multi sub load ( IO::Path $io ) is export {
     my $file = $io.path;
-    mkdir("/tmp/perl6-pod-load/") if !"/tmp/perl6-pod-load/".IO.e; 
     my $precomp-store = CompUnit::PrecompilationStore::File.new(prefix => "/tmp/perl6-pod-load/".IO);
     my $precomp = CompUnit::PrecompilationRepository::Default.new(store => $precomp-store);
     my $id = nqp::sha1(~$file);
