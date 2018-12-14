@@ -9,6 +9,8 @@ for <test.pod6 class.pm6> -> $file {
     like( $pod.^name, /Pod\:\:/, "That something is a Pod");
     $pod = load( $prefix ~ $file );
     ok( $pod, "$file load returns something and is cached" );
+    my $io = ( $prefix ~ $file ).IO;
+    ok( $io, "$file.IO works too");
 }
 
 done-testing;
