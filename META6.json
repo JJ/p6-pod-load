@@ -1,0 +1,19 @@
+{
+  "authors" : [
+    "JJ Merelo"
+  ],
+  "build-depends" : [ ],
+  "depends" : [ ],
+  "description" : "blah blah blah",
+  "license" : "Artistic-2.0",
+  "name" : "Pod::Load",
+  "perl" : "6.c",
+  "provides" : {
+    "Pod::Load" : "lib/Pod/Load.pm6"
+  },
+  "resources" : [ ],
+  "source-url" : "",
+  "tags" : [ ],
+  "test-depends" : [ ],
+  "version" : "0.0.1"
+}
