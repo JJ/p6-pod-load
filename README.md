@@ -10,8 +10,17 @@ SYNOPSIS
 
     use Pod::Load;
 
-    my $pod = load("file-with.pod6");
+    # Read a file handle.
+    my $pod = load("file-with.pod6".IO);
     say $pod.perl; # Process it as a Pod
+
+    my $string-with-pod = q:to/EOH/;
+
+This ordinary paragraph introduces a code block:
+
+EOH
+
+say load( $string-with-pod ).perl;
 
 DESCRIPTION
 ===========
@@ -38,7 +47,7 @@ multi sub load(
 ) returns Mu
 ```
 
-Loads a file, returns a Pod. Taken from pod2onepage
+Loads a string, returns a Pod.
 
 ### multi sub load
 
