@@ -11,8 +11,17 @@ Pod::Load - Loads and compiles the Pod documentation of an external file
 
     use Pod::Load;
 
-    my $pod = load("file-with.pod6");
+    # Read a file handle.
+    my $pod = load("file-with.pod6".IO);
     say $pod.perl; # Process it as a Pod
+
+    my $string-with-pod = q:to/EOH/;
+    =begin pod
+    This ordinary paragraph introduces a code block:
+    =end pod
+    EOH
+
+    say load( $string-with-pod ).perl;
 
 =head1 DESCRIPTION
 
@@ -34,7 +43,7 @@ use nqp;
 
 $*TMPDIR.add('perl6-pod-load');
 
-#| Loads a file, returns a Pod. Taken from pod2onepage
+#| Loads a string, returns a Pod.
 multi sub load ( Str $string ) is export {
     my $initials= $string.words.map( *.substr(1,1) )[^128]:v;
     my $id = "/tmp/perl6-pod-load/"~ $initials.join("") ~ ".pod6";
