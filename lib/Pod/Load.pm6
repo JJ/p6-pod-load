@@ -42,6 +42,7 @@ This library is free software; you can redistribute it and/or modify it under th
 use nqp;
 
 $*TMPDIR.add('perl6-pod-load');
+mkdir("/tmp/perl6-pod-load") if ! "/tmp/perl6-pod-load".IO.e;
 
 #| Loads a string, returns a Pod.
 multi sub load ( Str $string ) is export {
