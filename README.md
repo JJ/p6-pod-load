@@ -34,7 +34,7 @@ This library is free software; you can redistribute it and/or modify it under th
 
 ```perl6
 multi sub load(
-    $file where { ... }
+    Str $string
 ) returns Mu
 ```
 

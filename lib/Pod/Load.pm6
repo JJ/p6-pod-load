@@ -1,5 +1,5 @@
 use v6.c;
-unit module Pod::Load:ver<0.0.2>;
+unit module Pod::Load:ver<0.0.3>;
 
 =begin pod
 
@@ -35,8 +35,11 @@ use nqp;
 $*TMPDIR.add('perl6-pod-load');
 
 #| Loads a file, returns a Pod. Taken from pod2onepage
-multi sub load ( $file where .IO.e ) is export {
-    return load( $file.IO );
+multi sub load ( Str $string ) is export {
+    my $initials= $string.words.map( *.substr(1,1) )[^128]:v;
+    my $id = "/tmp/perl6-pod-load/"~ $initials.join("") ~ ".pod6";
+    spurt $id, $string;
+    return load( $id.IO );
 }
 
 #| Loads a IO::Path, returns a Pod. Taken from pod2onepage
