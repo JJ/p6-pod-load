@@ -30,13 +30,23 @@ Copyright 2018 JJ Merelo
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
-### sub load
+### multi sub load
 
 ```perl6
-sub load(
+multi sub load(
     $file where { ... }
 ) returns Mu
 ```
 
 Loads a file, returns a Pod. Taken from pod2onepage
+
+### multi sub load
+
+```perl6
+multi sub load(
+    IO::Path $io
+) returns Mu
+```
+
+Loads a IO::Path, returns a Pod. Taken from pod2onepage
 
