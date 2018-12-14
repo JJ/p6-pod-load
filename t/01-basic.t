@@ -2,6 +2,10 @@ use v6.c;
 use Test;
 use Pod::Load;
 
-pass "replace me";
+for <test.pod6 class.pm6> -> $file {
+    my $pod = load( $file );
+    ok( $pod, "$file load Returns something" );
+    like( $pod.^name, /Pod\:\:/, "That something is a Pod");
+}
 
 done-testing;

@@ -1,5 +1,5 @@
 use v6.c;
-unit class Pod::Load:ver<0.0.1>;
+unit package Pod::Load:ver<0.0.1>;
 
 
 =begin pod
@@ -27,3 +27,23 @@ Copyright 2018 JJ Merelo
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
 =end pod
+
+use nqp;
+
+#| Loads a file, returns a Pod. Taken from pod2onepage
+sub load ( $file where .IO.e ) is export {
+    my $io = $file.IO;
+    my $precomp-store = CompUnit::PrecompilationStore::File.new(prefix => "/tmp/perl6-pod-load/".IO);
+    my $precomp = CompUnit::PrecompilationRepository::Default.new(store => $precomp-store);
+    my $id = nqp::sha1(~$file);
+    my $handle = $precomp.load($id)[0];
+
+    without $handle {
+	say "No cache";
+        $precomp.precompile($io, $id, :force);
+        $handle = $precomp.load($id)[0] // fail("Could not precompile $file");
+    }
+
+    return nqp::atkey($handle.unit,'$=pod')[0];
+
+}
