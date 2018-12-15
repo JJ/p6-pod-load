@@ -22,6 +22,10 @@ EOH
 
 say load( $string-with-pod ).perl;
 
+You can also reconfigure the global variables. However, if you change one you'll have to change the whole thing. In the future, I might come up with a better way of doing this...
+
+$Pod::Load::tmp-dir= "/tmp/my-precomp-dir/"; $Pod::Load::precomp-store = CompUnit::PrecompilationStore::File.new(prefix => $Pod::Load::tmp-dir.IO); $Pod::Load::precomp = CompUnit::PrecompilationRepository::Default.new(store => $Pod::Load::precomp-store);
+
 DESCRIPTION
 ===========
 
@@ -48,6 +52,16 @@ multi sub load(
 ```
 
 Loads a string, returns a Pod.
+
+### multi sub load
+
+```perl6
+multi sub load(
+    Str $file where { ... }
+) returns Mu
+```
+
+If it's an actual filename, loads a file and returns the pod
 
 ### multi sub load
 
