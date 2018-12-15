@@ -25,9 +25,9 @@ Pod::Load - Loads and compiles the Pod documentation of an external file
 
 You can also reconfigure the global variables. However, if you change one you'll have to change the whole thing. N<In the future, I might come up with a better way of doing this...>
 
-    $POD::Load::tmp-dir= "/tmp/my-precomp-dir/";
-    $POD::Load::precomp-store = CompUnit::PrecompilationStore::File.new(prefix => $tmp-dir.IO);
-    $POD::Load::precomp = CompUnit::PrecompilationRepository::Default.new(store => $precomp-store);
+    $Pod::Load::tmp-dir= "/tmp/my-precomp-dir/";
+    $Pod::Load::precomp-store = CompUnit::PrecompilationStore::File.new(prefix => $Pod::Load::tmp-dir.IO);
+    $Pod::Load::precomp = CompUnit::PrecompilationRepository::Default.new(store => $Pod::Load::precomp-store);
 
 =head1 DESCRIPTION
 
