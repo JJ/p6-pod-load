@@ -41,22 +41,30 @@ This library is free software; you can redistribute it and/or modify it under th
 
 use nqp;
 
-$*TMPDIR.add('perl6-pod-load');
-mkdir("/tmp/perl6-pod-load") if ! "/tmp/perl6-pod-load".IO.e;
+our $precomp-dir is export = 'perl6-pod-load';
+$*TMPDIR.add($precomp-dir);
+our $tmp-dir is export = "/tmp/$precomp-dir/";
+mkdir($tmp-dir) if ! $tmp-dir.IO.e;
+our $precomp-store is export = CompUnit::PrecompilationStore::File.new(prefix => $tmp-dir.IO);
+our $precomp is export = CompUnit::PrecompilationRepository::Default.new(store => $precomp-store);
+
 
 #| Loads a string, returns a Pod.
 multi sub load ( Str $string ) is export {
     my $initials= $string.words.map( *.substr(1,1) )[^128]:v;
-    my $id = "/tmp/perl6-pod-load/"~ $initials.join("") ~ ".pod6";
+    my $id = $tmp-dir~ $initials.join("") ~ ".pod6";
     spurt $id, $string;
     return load( $id.IO );
+}
+
+#| If it's an actual filename, loads a file and returns the pod
+multi sub load( Str $file where .IO.e ) {
+    return load( $file.IO );
 }
 
 #| Loads a IO::Path, returns a Pod. Taken from pod2onepage
 multi sub load ( IO::Path $io ) is export {
     my $file = $io.path;
-    my $precomp-store = CompUnit::PrecompilationStore::File.new(prefix => "/tmp/perl6-pod-load/".IO);
-    my $precomp = CompUnit::PrecompilationRepository::Default.new(store => $precomp-store);
     my $id = nqp::sha1(~$file);
     my $handle = $precomp.load($id)[0];
     without $handle {
