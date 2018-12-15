@@ -23,6 +23,12 @@ Pod::Load - Loads and compiles the Pod documentation of an external file
 
     say load( $string-with-pod ).perl;
 
+You can also reconfigure the global variables. However, if you change one you'll have to change the whole thing. N<In the future, I might come up with a better way of doing this...>
+
+    $POD::Load::tmp-dir= "/tmp/my-precomp-dir/";
+    $POD::Load::precomp-store = CompUnit::PrecompilationStore::File.new(prefix => $tmp-dir.IO);
+    $POD::Load::precomp = CompUnit::PrecompilationRepository::Default.new(store => $precomp-store);
+
 =head1 DESCRIPTION
 
 Pod::Load is a module with a simple task: obtain the documentation of an external file in a standard, straighworward way. Its mechanism is inspired by L<C<Pod::To::BigPage>|https://github.com/perl6/perl6-pod-to-bigpage>, from where the code to use the cache is taken from.
