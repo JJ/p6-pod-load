@@ -75,7 +75,6 @@ multi sub load ( IO::Path $io ) is export {
     $precomp.precompile($io, $id, :force);
     my $handle = $precomp.load($id)[0] // fail("Could not precompile $file for $!");
     $precomp-store.delete-by-compiler($compiler-id);
-    say nqp::atkey($handle.unit,'$=pod').perl;
-    return nqp::atkey($handle.unit,'$=pod')[0];
+    return nqp::atkey($handle.unit,'$=pod');
 
 }

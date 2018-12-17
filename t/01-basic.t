@@ -18,8 +18,8 @@ EOH
 
     my $pod = load( $string-with-pod );
     ok( $pod, "String load returns something" );
-    like( $pod.^name, /Pod\:\:/, "That something is a Pod");
-    isa-ok( $pod.contents[0], Pod::Block::Para, "Parsed OK" );
+    like( $pod[0].^name, /Pod\:\:/, "The first element of that is a Pod");
+    isa-ok( $pod[0].contents[0], Pod::Block::Para, "Parsed OK" );
 
     diag "Testing files";
     for %tests.kv -> $file, $re {
@@ -27,11 +27,11 @@ EOH
         my $file-name = $prefix ~ $file;
         $pod = load( $file-name );
         ok( $pod, "$file-name load returns something" );
-        like( $pod.^name, /Pod\:\:/, "That something is a Pod");
+        like( $pod[0].^name, /Pod\:\:/, "That something is a Pod");
         my $io = $file-name.IO;
         $pod = load( $io );
         ok( $pod, "$file load returns something" );
-        like( $pod.^name, /Pod\:\:/, "That something is a Pod");
+        like( $pod[0].^name, /Pod\:\:/, "That something is a Pod");
         like( $pod.gist, $re, "$file gets the content right" );
 
     }
