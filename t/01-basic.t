@@ -2,6 +2,10 @@ use v6.c;
 use Test;
 use Pod::Load;
 
+constant %tests = { "test.pod6" => /extension/,
+                    "class.pm6" => /Hello/,
+                    "multi.pod6" => /mortals/ };
+
 sub do-the-test() {
     diag "Testing strings";
     my $string-with-pod = q:to/EOH/;
@@ -18,7 +22,7 @@ EOH
     isa-ok( $pod.contents[0], Pod::Block::Para, "Parsed OK" );
 
     diag "Testing files";
-    for <test.pod6 class.pm6> -> $file {
+    for %tests.kv -> $file, $re {
         my $prefix = $file.IO.e??"./"!!"t/";
         my $file-name = $prefix ~ $file;
         $pod = load( $file-name );
@@ -28,8 +32,7 @@ EOH
         $pod = load( $io );
         ok( $pod, "$file load returns something" );
         like( $pod.^name, /Pod\:\:/, "That something is a Pod");
-        $pod = load( $io );
-        ok( $pod, "$file load returns something and is cached" );
+        like( $pod.gist, $re, "$file gets the content right" );
 
     }
 }
@@ -40,5 +43,6 @@ $Pod::Load::precomp-dir= "my-precomp-dir/";
 diag( "Changing default values" );
 do-the-test(); # Use these new values.
 nok( ($*TMPDIR ~ "/" ~ $Pod::Load::precomp-dir).IO.d, "Directory has been removed" );
+
 
 done-testing;

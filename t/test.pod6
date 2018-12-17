@@ -10,7 +10,7 @@ class Magician {
   has Str @.spells;
 }
  
-#| Fight mechanics 
+#| Flight mechanics 
 sub duel(Magician $a, Magician $b) {
 }
 #= Magicians only, no mortals. 
