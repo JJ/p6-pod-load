@@ -49,7 +49,7 @@ use nqp;
 
 our $precomp-dir is export = 'perl6-pod-load';
 $*TMPDIR.add($precomp-dir);
-
+my $compiler-id = CompUnit::PrecompilationId.new-without-check($*PERL.compiler.id);
 
 #| Loads a string, returns a Pod.
 multi sub load ( Str $string ) is export {
@@ -70,12 +70,9 @@ multi sub load ( IO::Path $io ) is export {
     my $id = nqp::sha1(~$file);
     my $precomp-store = CompUnit::PrecompilationStore::File.new(prefix => $*TMPDIR.IO);
     my $precomp  = CompUnit::PrecompilationRepository::Default.new(store => $precomp-store);
-    my $handle = $precomp.load($id)[0];
-    without $handle {
-        $precomp.precompile($io, $id, :force);
-        $handle = $precomp.load($id)[0] // fail("Could not precompile $file for $!");
-    }
-
+    $precomp.precompile($io, $id, :force);
+    my $handle = $precomp.load($id)[0] // fail("Could not precompile $file for $!");
+    $precomp-store.delete-by-compiler($compiler-id);
     return nqp::atkey($handle.unit,'$=pod')[0];
 
 }
