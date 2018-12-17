@@ -15,6 +15,7 @@ EOH
     my $pod = load( $string-with-pod );
     ok( $pod, "String load returns something" );
     like( $pod.^name, /Pod\:\:/, "That something is a Pod");
+    isa-ok( $pod.contents[0], Pod::Block::Para, "Parsed OK" );
 
     diag "Testing files";
     for <test.pod6 class.pm6> -> $file {

@@ -47,16 +47,18 @@ This library is free software; you can redistribute it and/or modify it under th
 
 use nqp;
 
+use Temp::Path;
+
 our $precomp-dir is export = 'perl6-pod-load';
 $*TMPDIR.add($precomp-dir);
 my $compiler-id = CompUnit::PrecompilationId.new-without-check($*PERL.compiler.id);
 
 #| Loads a string, returns a Pod.
 multi sub load ( Str $string ) is export {
-    my $initials= $string.words.map( *.substr(1,1) )[^128]:v;
-    my $id = $*TMPDIR~ "/" ~ $initials.join("") ~ ".pod6";
-    spurt $id, $string;
-    return load( $id.IO );
+    with make-temp-path {
+        .spurt: $string;
+        return load( .IO );
+    }
 }
 
 #| If it's an actual filename, loads a file and returns the pod
