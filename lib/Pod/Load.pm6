@@ -49,16 +49,12 @@ use nqp;
 
 our $precomp-dir is export = 'perl6-pod-load';
 $*TMPDIR.add($precomp-dir);
-our $tmp-dir is export = "/tmp/$precomp-dir/";
-mkdir($tmp-dir) if ! $tmp-dir.IO.e;
-our $precomp-store is export = CompUnit::PrecompilationStore::File.new(prefix => $tmp-dir.IO);
-our $precomp is export = CompUnit::PrecompilationRepository::Default.new(store => $precomp-store);
 
 
 #| Loads a string, returns a Pod.
 multi sub load ( Str $string ) is export {
     my $initials= $string.words.map( *.substr(1,1) )[^128]:v;
-    my $id = $tmp-dir~ $initials.join("") ~ ".pod6";
+    my $id = $*TMPDIR~ "/" ~ $initials.join("") ~ ".pod6";
     spurt $id, $string;
     return load( $id.IO );
 }
@@ -72,10 +68,12 @@ multi sub load( Str $file where .IO.e ) {
 multi sub load ( IO::Path $io ) is export {
     my $file = $io.path;
     my $id = nqp::sha1(~$file);
+    my $precomp-store = CompUnit::PrecompilationStore::File.new(prefix => $*TMPDIR.IO);
+    my $precomp  = CompUnit::PrecompilationRepository::Default.new(store => $precomp-store);
     my $handle = $precomp.load($id)[0];
     without $handle {
         $precomp.precompile($io, $id, :force);
-        $handle = $precomp.load($id)[0] // fail("Could not precompile $file");
+        $handle = $precomp.load($id)[0] // fail("Could not precompile $file for $!");
     }
 
     return nqp::atkey($handle.unit,'$=pod')[0];
