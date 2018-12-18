@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/JJ/p6-pod-load.svg?branch=master)](https://travis-ci.org/JJ/p6-pod-load)
+[![Build Status](https://travis-ci.com/JJ/p6-pod-load.svg?branch=master)](https://travis-ci.com/JJ/p6-pod-load)
 
 NAME
 ====
