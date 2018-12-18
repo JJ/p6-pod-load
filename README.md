@@ -14,6 +14,10 @@ SYNOPSIS
     my $pod = load("file-with.pod6".IO);
     say $pod.perl; # Process it as a Pod
 
+    # Or use simply the file name
+    my @pod = load("file-with.pod6");
+    say .perl for @pod;
+
     my $string-with-pod = q:to/EOH/;
 
 This ordinary paragraph introduces a code block:
