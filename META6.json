@@ -1,21 +1,23 @@
 {
-  "authors" : [
-    "JJ Merelo"
-  ],
-  "build-depends" : [ ],
-  "depends" : [
-    "Temp::Path"
-  ],
-  "description" : "Loads and compiles the Pod documentation of an external file",
-  "license" : "Artistic-2.0",
-  "name" : "Pod::Load",
-  "perl" : "6.c",
-  "provides" : {
-    "Pod::Load" : "lib/Pod/Load.pm6"
-  },
-  "resources" : [ ],
-  "source-url" : "https://github.com/JJ/p6-pod-load.git",
-  "tags" : [ ],
-  "test-depends" : [ ],
-  "version" : "0.3.0"
+    "authors" : [
+        "JJ Merelo"
+    ],
+    "build-depends" : [ ],
+    "depends" : [
+        "nqp",
+        "Temp::Path"
+    ],
+    "description" : "Loads and compiles the Pod documentation of an external file",
+    "license" : "Artistic-2.0",
+    "name" : "Pod::Load",
+    "perl" : "6.c",
+    "provides" : {
+        "Pod::Load" : "lib/Pod/Load.pm6"
+    },
+    "resources" : [ "examples/pod-load-clean.pod6",
+                    "examples/README.md"],
+    "source-url" : "https://github.com/JJ/p6-pod-load.git",
+    "tags" : [ ],
+    "test-depends" : [ ],
+    "version" : "0.3.0"
 }
