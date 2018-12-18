@@ -1,5 +1,5 @@
 use v6.c;
-unit module Pod::Load:ver<0.3.1>;
+unit module Pod::Load:ver<0.4.0>;
 
 =begin pod
 

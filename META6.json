@@ -4,7 +4,6 @@
   ],
   "build-depends" : [ ],
   "depends" : [
-    "nqp",
     "Temp::Path"
   ],
   "description" : "Loads and compiles the Pod documentation of an external file",
@@ -21,5 +20,5 @@
   "source-url" : "https://github.com/JJ/p6-pod-load.git",
   "tags" : [ ],
   "test-depends" : [ ],
-  "version" : "0.3.1"
+  "version" : "0.4.0"
 }

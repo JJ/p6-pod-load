@@ -1,6 +1,7 @@
 2018-12-18  Juan J. merelo  <jmerelo@penny>
 
 	* META6.json: Bumps up with examples and improving documentation.
+	nqp is not actually a dependency you can list...
 
 2018-12-17  Juan J. merelo  <jmerelo@penny>
 
