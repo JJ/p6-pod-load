@@ -5,7 +5,7 @@ unit module Pod::Load:ver<0.5.1>;
 
 =head1 NAME
 
-Pod::Load - Loads and compiles the Pod documentation of an external file
+Pod::Load - Loads and compiles the Pod documentation from a string or file.
 
 =head1 SYNOPSIS
 
@@ -15,7 +15,7 @@ Pod::Load - Loads and compiles the Pod documentation of an external file
     my $pod = load("file-with.pod6".IO);
     say $pod.perl; # Process it as a Pod
 
-    # Or use simply the file name
+    # Or use simply the file name (it should exist)
     my @pod = load("file-with.pod6");
     say .perl for @pod;
 
@@ -27,19 +27,20 @@ Pod::Load - Loads and compiles the Pod documentation of an external file
 
     say load( $string-with-pod ).perl;
 
-You can also reconfigure the global variables. However, if you change one you'll have to change the whole thing. N<In the future, I might come up with a better way of doing this...>
-
-    $Pod::Load::tmp-dir= "/tmp/my-precomp-dir/";
-    $Pod::Load::precomp-store = CompUnit::PrecompilationStore::File.new(prefix => $Pod::Load::tmp-dir.IO);
-    $Pod::Load::precomp = CompUnit::PrecompilationRepository::Default.new(store => $Pod::Load::precomp-store);
-
 =head1 DESCRIPTION
 
 Pod::Load is a module with a simple task:
 obtaining the documentation of an external file in a standard,
-straighworward way. Its mechanism is inspired by
+straighworward way. Its mechanism (using EVAL) is inspired by
 L<C<Pod::To::BigPage>|https://github.com/perl6/perl6-pod-to-bigpage>.
 
+=head1 CAVEATS
+
+The pod is obtained from the file or string via EVAL. That means that
+it's going to run what is actually there. If you don't want that to
+happen, strip all runnable code from the string (or file) before
+submitting it to this module.
+              
 =head1 AUTHOR
 
 JJ Merelo <jjmerelo@gmail.com>
