@@ -35,7 +35,10 @@ You can also reconfigure the global variables. However, if you change one you'll
 
 =head1 DESCRIPTION
 
-Pod::Load is a module with a simple task: obtain the documentation of an external file in a standard, straighworward way. Its mechanism is inspired by L<C<Pod::To::BigPage>|https://github.com/perl6/perl6-pod-to-bigpage>, from where the code to use the cache is taken from.
+Pod::Load is a module with a simple task:
+obtaining the documentation of an external file in a standard,
+straighworward way. Its mechanism is inspired by
+L<C<Pod::To::BigPage>|https://github.com/perl6/perl6-pod-to-bigpage>.
 
 =head1 AUTHOR
 
@@ -45,7 +48,8 @@ JJ Merelo <jjmerelo@gmail.com>
 
 Copyright 2018 JJ Merelo
 
-This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
+This library is free software; you can redistribute it and/or modify
+                               it under the Artistic License 2.0. 
 
 =end pod
 
@@ -70,7 +74,7 @@ multi sub load( Str $file where .IO.e ) {
     return load( $file.IO );
 }
 
-#| Loads a IO::Path, returns a Pod. Taken from pod2onepage
+#| Loads a IO::Path, returns a Pod. (Originally) from pod2onepage
 multi sub load ( IO::Path $io ) is export {
     my $file = $io.path;
     my $id = nqp::sha1(~$file);
