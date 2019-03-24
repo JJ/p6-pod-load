@@ -20,7 +20,6 @@ install:
   - zef install IO::Socket::SSL
   - zef --depsonly install .
   - zef install Test::META
-  - zef build .
 
 build: off
 
