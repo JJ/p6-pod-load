@@ -4,7 +4,7 @@ use Pod::Load;
 
 diag "Testing strings with metadata";
 my $string-with-pod = q:to/EOH/;
-=begin pod :3ver :skip-test
+=begin pod :ver(3) :skip-test<Chunk>
 This ordinary paragraph introduces a code block:
     $this = 1 * code('block');
     $which.is_specified(:by<indenting>);
@@ -14,6 +14,5 @@ EOH
 my @pod = load( $string-with-pod );
 ok( @pod, "String load returns something" );
 like( @pod[0].^name, /Pod\:\:/, "The first element of that is a Pod");
-dd @pod[0].config;
-is( @pod[0].config, {:ver, :skip-test}, "Config passed" );
+is( @pod[0].config, {:ver(3), :skip-test<Chunk>}, "Config passed" );
 done-testing;
