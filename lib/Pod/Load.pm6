@@ -46,7 +46,7 @@ JJ Merelo <jjmerelo@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2018 JJ Merelo
+Copyright 2018,2019 JJ Merelo
 
 This library is free software; you can redistribute it and/or modify
                                it under the Artistic License 2.0. 
@@ -56,6 +56,7 @@ This library is free software; you can redistribute it and/or modify
 use nqp;
 
 use Temp::Path;
+use MONKEY-SEE-NO-EVAL;
 
 our $precomp-dir is export = 'perl6-pod-load';
 $*TMPDIR.add($precomp-dir);
@@ -63,10 +64,8 @@ my $compiler-id = CompUnit::PrecompilationId.new-without-check($*PERL.compiler.i
 
 #| Loads a string, returns a Pod.
 multi sub load ( Str $string ) is export {
-    with make-temp-path {
-        .spurt: $string;
-        return load( .IO );
-    }
+    my @pod = (EVAL ($string ~ "\n\$=pod"));
+    return @pod;
 }
 
 #| If it's an actual filename, loads a file and returns the pod
