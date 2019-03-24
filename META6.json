@@ -3,9 +3,7 @@
     "JJ Merelo"
   ],
   "build-depends" : [ ],
-  "depends" : [
-    "Temp::Path"
-  ],
+  "depends" : [],
   "description" : "Loads and compiles the Pod documentation of an external file",
   "license" : "Artistic-2.0",
   "name" : "Pod::Load",
