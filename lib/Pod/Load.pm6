@@ -64,7 +64,9 @@ my $compiler-id = CompUnit::PrecompilationId.new-without-check($*PERL.compiler.i
 
 #| Loads a string, returns a Pod.
 multi sub load ( Str $string ) is export {
-    my @pod = (EVAL ($string ~ "\n\$=pod"));
+    my $module-name = "m{rand}";
+    $module-name ~~ s/\.//;
+    my @pod = (EVAL ("module $module-name \{\n" ~ $string ~ "\}\n\$=pod"));
     return @pod;
 }
 
@@ -75,13 +77,5 @@ multi sub load( Str $file where .IO.e ) {
 
 #| Loads a IO::Path, returns a Pod. (Originally) from pod2onepage
 multi sub load ( IO::Path $io ) is export {
-    my $file = $io.path;
-    my $id = nqp::sha1(~$file);
-    my $precomp-store = CompUnit::PrecompilationStore::File.new(prefix => $*TMPDIR.IO);
-    my $precomp  = CompUnit::PrecompilationRepository::Default.new(store => $precomp-store);
-    $precomp.precompile($io, $id, :force);
-    my $handle = $precomp.load($id)[0] // fail("Could not precompile $file for $!");
-    $precomp-store.delete-by-compiler($compiler-id);
-    return nqp::atkey($handle.unit,'$=pod');
-
+    return load($io.slurp);
 }
