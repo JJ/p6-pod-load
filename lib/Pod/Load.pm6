@@ -55,10 +55,6 @@ This library is free software; you can redistribute it and/or modify
 
 use MONKEY-SEE-NO-EVAL;
 
-our $precomp-dir is export = 'perl6-pod-load';
-$*TMPDIR.add($precomp-dir);
-my $compiler-id = CompUnit::PrecompilationId.new-without-check($*PERL.compiler.id);
-
 #| Loads a string, returns a Pod.
 multi sub load ( Str $string ) is export {
     my $module-name = "m{rand}";
