@@ -53,9 +53,6 @@ This library is free software; you can redistribute it and/or modify
 
 =end pod
 
-use nqp;
-
-use Temp::Path;
 use MONKEY-SEE-NO-EVAL;
 
 our $precomp-dir is export = 'perl6-pod-load';
