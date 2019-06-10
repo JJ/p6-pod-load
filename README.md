@@ -35,18 +35,6 @@ DESCRIPTION
 
 Pod::Load is a module with a simple task: obtain the documentation of an external file in a standard, straighworward way. Its mechanism is inspired by [`Pod::To::BigPage`](https://github.com/perl6/perl6-pod-to-bigpage), from where the code to use the cache is taken from.
 
-AUTHOR
-======
-
-JJ Merelo <jjmerelo@gmail.com>
-
-COPYRIGHT AND LICENSE
-=====================
-
-Copyright 2018, 2019 JJ Merelo
-
-This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
-
 ### multi sub load
 
 ```perl6
@@ -76,4 +64,33 @@ multi sub load(
 ```
 
 Loads a IO::Path, returns a Pod. Taken from pod2onepage
+
+
+
+INSTRUCTIONS
+============
+
+This is mainly a reminder to myself, although it can help you if you create a distribution just like this one.
+
+Write:
+
+    export VERSION=0.x.x
+
+And
+
+    make dist
+
+To create a tar file ready for CPAN.
+
+AUTHOR
+======
+
+JJ Merelo <jjmerelo@gmail.com>
+
+COPYRIGHT AND LICENSE
+=====================
+
+Copyright 2018, 2019 JJ Merelo
+
+This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
