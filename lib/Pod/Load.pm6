@@ -67,7 +67,7 @@ multi sub load ( Str $string ) is export {
         my @chunks = $copy.split( /"="output/ );
         @pod = (EVAL ("module $module-name \{\n" ~ @chunks[0] ~ "\}\n\$=pod;\n\n=output@chunks[1]"));
     } else {
-        @pod = (EVAL ("module $module-name \{\n" ~ $copy ~ "\}\n\$=pod"));
+        @pod = (EVAL ("module $module-name \{\n" ~ $copy ~ "\n\}\n\$=pod"));
     }
     return @pod;
 }

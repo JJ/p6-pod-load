@@ -2,10 +2,13 @@ use v6.c;
 use Test;
 use Pod::Load;
 
-constant %tests = { "test.pod6" => /extension/,
-                    "class.pm6" => /Hello/,
-                    "multi.pod6" => /mortals/,
-                    "can.p6"     => /1/};
+constant %tests = {
+    "pod-test.pod6" => /K/,
+    "test.pod6" => /extension/,
+    "class.pm6" => /Hello/,
+    "multi.pod6" => /mortals/,
+    "can.p6"     => /1/
+};
 
 sub do-the-test() {
     diag "Testing strings";
