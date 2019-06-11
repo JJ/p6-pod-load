@@ -1,5 +1,5 @@
 use v6.c;
-unit module Pod::Load:ver<0.5.3>;
+unit module Pod::Load:ver<0.5.4>;
 
 =begin pod
 
@@ -29,8 +29,8 @@ Pod::Load - Loads and compiles the Pod documentation from a string or file.
 
 =head1 DESCRIPTION
 
-Pod::Load is a module with a simple task:
-obtaining the documentation of an external file in a standard,
+Pod::Load is a module with a simple task (and interface):
+obtaining the documentation tree of an external file in a standard,
 straighworward way. Its mechanism (using EVAL) is inspired by
 L<C<Pod::To::BigPage>|https://github.com/perl6/perl6-pod-to-bigpage>.
 
@@ -39,8 +39,8 @@ L<C<Pod::To::BigPage>|https://github.com/perl6/perl6-pod-to-bigpage>.
 The pod is obtained from the file or string via EVAL. That means that
 it's going to run what is actually there. If you don't want that to
 happen, strip all runnable code from the string (or file) before
-submitting it to this module.
-              
+submitting it to C<load>.
+
 =head1 AUTHOR
 
 JJ Merelo <jjmerelo@gmail.com>
