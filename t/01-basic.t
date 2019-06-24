@@ -4,10 +4,11 @@ use Pod::Load;
 
 constant %tests = {
     "pod-test.pod6" => /K/,
-    "test.pod6" => /extension/,
-    "class.pm6" => /Hello/,
+    "test.pod6"  => /extension/,
+    "class.pm6"  => /Hello/,
     "multi.pod6" => /mortals/,
-    "can.p6"     => /1/
+    "can.p6"     => /1/,
+    "pod.pod6"   => /Unordered/
 };
 
 sub do-the-test() {
