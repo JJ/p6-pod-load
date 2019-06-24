@@ -1,3 +1,7 @@
+2019-06-24  JJMerelo  <jmerelo@bojack>
+
+	* META6.json: Fixes a problem when =output was in the middle of a sentence and not at the beginning of a line.
+
 2019-06-11  Juan J. merelo  <jmerelo@penny>
 
 	* lib/Pod/Load.pm6: This is mainly a maintenance version to avoid problems with CPAN.
