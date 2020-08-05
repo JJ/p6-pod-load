@@ -76,8 +76,30 @@ multi sub load ( Str $string ) is export {
 multi sub load( Str $file where .IO.e ) {
     return load( $file.IO );
 }
-
-#| Loads a IO::Path, returns a Pod. (Originally) from pod2onepage
+class X::LoadPod::SourceErrors is Exception {
+    has $.error;
+    method message { $!error }
+}
+#| compiles a file from source
 multi sub load ( IO::Path $io ) is export {
-    return load($io.slurp);
+    use File::Temp;
+    use nqp;
+    my $cache-path = tempdir;
+    my $precomp-repo = CompUnit::PrecompilationRepository::Default.new(
+            :store(CompUnit::PrecompilationStore::File.new(:prefix($cache-path.IO))),
+            );
+    my $handle = $precomp-repo.try-load(
+            CompUnit::PrecompilationDependency::File.new(
+                    :src($io),
+                    :id(CompUnit::PrecompilationId.new-from-string($io)),
+                    :spec(CompUnit::DependencySpecification.new(:short-name($io))),
+                    )
+            );
+    CATCH {
+        default {
+            X::LoadPod::SourceErrors.new(:error( .message.Str )).throw
+        }
+    }
+    nqp::atkey($handle.unit, '$=pod')
+
 }
