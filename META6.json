@@ -2,7 +2,7 @@
     "authors" : [
 	"JJ Merelo"
     ],
-    "depends" : [ "File::Temp" ],,
+    "depends" : [ "File::Temp" ],
     "description" : "Loads and compiles the Pod documentation of an external file",
     "license" : "Artistic-2.0",
     "name" : "Pod::Load",
