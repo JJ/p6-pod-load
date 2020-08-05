@@ -76,11 +76,14 @@ multi sub load ( Str $string ) is export {
 multi sub load( Str $file where .IO.e ) {
     return load( $file.IO );
 }
+
+#| Exception representing errors in the source of any kind
 class X::LoadPod::SourceErrors is Exception {
     has $.error;
     method message { $!error }
 }
-#| compiles a file from source
+
+#| Compiles a file from source
 multi sub load ( IO::Path $io ) is export {
     use File::Temp;
     use nqp;
