@@ -93,7 +93,7 @@ multi sub load ( IO::Path $io ) is export {
             );
     my $handle = $precomp-repo.try-load(
             CompUnit::PrecompilationDependency::File.new(
-                    :src($io),
+                    :src($io.path),
                     :id(CompUnit::PrecompilationId.new-from-string($io.path)),
                     :spec(CompUnit::DependencySpecification.new(:short-name($io.path))),
                     )
