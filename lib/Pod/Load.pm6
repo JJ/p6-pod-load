@@ -55,6 +55,7 @@ it under the Artistic License 2.0.
 =end pod
 
 use MONKEY-SEE-NO-EVAL;
+use File::Temp; # For tempdir below
 
 #| Loads a string, returns a Pod.
 multi sub load ( Str $string ) is export {
@@ -77,7 +78,31 @@ multi sub load( Str $file where .IO.e ) {
     return load( $file.IO );
 }
 
-#| Loads a IO::Path, returns a Pod. (Originally) from pod2onepage
+#| Exception representing errors in the source of any kind
+class X::LoadPod::SourceErrors is Exception {
+    has $.error;
+    method message { $!error }
+}
+
+#| Compiles a file from source
 multi sub load ( IO::Path $io ) is export {
-    return load($io.slurp);
+    use nqp;
+    my $cache-path = tempdir;
+    my $precomp-repo = CompUnit::PrecompilationRepository::Default.new(
+            :store(CompUnit::PrecompilationStore::File.new(:prefix($cache-path.IO))),
+            );
+    my $handle = $precomp-repo.try-load(
+            CompUnit::PrecompilationDependency::File.new(
+                    :src($io.path),
+                    :id(CompUnit::PrecompilationId.new-from-string($io.path)),
+                    :spec(CompUnit::DependencySpecification.new(:short-name($io.path))),
+                    )
+            );
+    CATCH {
+        default {
+            X::LoadPod::SourceErrors.new(:error( .message.Str )).throw
+        }
+    }
+    nqp::atkey($handle.unit, '$=pod')
+
 }
