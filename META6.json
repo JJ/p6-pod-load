@@ -11,8 +11,8 @@
 	"Pod::Load" : "lib/Pod/Load.pm6"
     },
     "resources" : [
-	"examples/pod-load-clean.pod6",
-	"examples/README.md"
+	  "examples/pod-load-clean.pod6",
+	  "examples/README.md"
     ],
     "source-url" : "https://github.com/JJ/p6-pod-load.git",
     "tags" : ["Pod","Documentation" ],
