@@ -5,6 +5,7 @@ use Pod::Load;
 constant %tests = {
     "pod-test.pod6" => /K/,
     "test.pod6"  => /extension/,
+    "unit.pod6"  => /magicians/,
     "class.pm6"  => /Hello/,
     "multi.pod6" => /mortals/,
     "can.p6"     => /1/,

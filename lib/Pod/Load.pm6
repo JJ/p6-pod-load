@@ -75,7 +75,24 @@ multi sub load ( Str $string ) is export {
 
 #| If it's an actual filename, loads a file and returns the pod
 multi sub load( Str $file where .IO.e ) {
-    return load( $file.IO );
+    use nqp;
+    my $cache-path = tempdir;
+    my $precomp-repo = CompUnit::PrecompilationRepository::Default.new(
+            :store(CompUnit::PrecompilationStore::File.new(:prefix($cache-path.IO))),
+            );
+    my $handle = $precomp-repo.try-load(
+            CompUnit::PrecompilationDependency::File.new(
+                    :src($file),
+                    :id(CompUnit::PrecompilationId.new-from-string($file)),
+                    :spec(CompUnit::DependencySpecification.new(:short-name($file))),
+                    )
+            );
+    CATCH {
+        default {
+            X::LoadPod::SourceErrors.new(:error( .message.Str )).throw
+        }
+    }
+    nqp::atkey($handle.unit, '$=pod')
 }
 
 #| Exception representing errors in the source of any kind
@@ -86,23 +103,5 @@ class X::LoadPod::SourceErrors is Exception {
 
 #| Compiles a file from source
 multi sub load ( IO::Path $io ) is export {
-    use nqp;
-    my $cache-path = tempdir;
-    my $precomp-repo = CompUnit::PrecompilationRepository::Default.new(
-            :store(CompUnit::PrecompilationStore::File.new(:prefix($cache-path.IO))),
-            );
-    my $handle = $precomp-repo.try-load(
-            CompUnit::PrecompilationDependency::File.new(
-                    :src($io.path),
-                    :id(CompUnit::PrecompilationId.new-from-string($io.path)),
-                    :spec(CompUnit::DependencySpecification.new(:short-name($io.path))),
-                    )
-            );
-    CATCH {
-        default {
-            X::LoadPod::SourceErrors.new(:error( .message.Str )).throw
-        }
-    }
-    nqp::atkey($handle.unit, '$=pod')
-
+    load( $io.path )
 }

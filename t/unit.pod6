@@ -1,0 +1,13 @@
+=begin pod
+
+Pod 6, indicated by extension.
+
+=end pod
+
+#| Base class for magicians 
+unit class Magician;
+
+has Int $.level;
+has Str @.spells;
+ 
+
