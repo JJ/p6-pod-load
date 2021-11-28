@@ -61,7 +61,13 @@ multi sub load(
 
 Loads a IO::Path, returns a Pod.
 
+## INSTALL
 
+Do the usual:
+
+    zef install .
+
+to install this if you've made any modification.
 
 INSTRUCTIONS
 ============
