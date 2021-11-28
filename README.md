@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/JJ/p6-pod-load.svg?branch=master)](https://travis-ci.com/JJ/p6-pod-load) [![Build status](https://ci.appveyor.com/api/projects/status/lq9rqjq6hljdfqw4?svg=true)](https://ci.appveyor.com/project/JJ/p6-pod-load)
+[![Build status](https://ci.appveyor.com/api/projects/status/lq9rqjq6hljdfqw4?svg=true)](https://ci.appveyor.com/project/JJ/p6-pod-load)
 
 NAME
 ====
