@@ -59,7 +59,16 @@ it under the Artistic License 2.0.
 use MONKEY-SEE-NO-EVAL;
 use File::Temp; # For tempdir below
 
-#| Loads a string, returns a Pod.
+#| The string here should be valid Pod markup, without the enclosing stuff
+sub load-pod( Str $string ) {
+    return load(q:to/EOP/);
+=begin pod
+$string
+=end pod
+EOP
+}
+
+#| Loads a Raku code string, returns the Pod that could be included in it
 multi sub load ( Str $string ) is export {
     my $module-name = "m{rand}";
     my $copy = $string;
