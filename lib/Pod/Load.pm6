@@ -30,7 +30,7 @@ filehandle.
 
 =head1 DESCRIPTION
 
-Pod::Load is a module with a simple task (and interface):
+C<Pod::Load> is a module with a simple task (and interface):
 obtaining the documentation tree of an external file in a standard,
 straighworward way. Its mechanism (using EVAL) is inspired by
 L<C<Pod::To::BigPage>|https://github.com/perl6/perl6-pod-to-bigpage>,
