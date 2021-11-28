@@ -60,8 +60,8 @@ use MONKEY-SEE-NO-EVAL;
 use File::Temp; # For tempdir below
 
 #| The string here should be valid Pod markup, without the enclosing stuff
-sub load-pod( Str $string ) {
-    return load(q:to/EOP/);
+sub load-pod( Str $string ) is export {
+    return load(qq:to/EOP/);
 =begin pod
 $string
 =end pod
