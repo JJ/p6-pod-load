@@ -20,14 +20,9 @@ SYNOPSIS
     
     # Or a string
     @pod = load("=begin pod\nThis could be a comment with C<code>\n=end pod");
-
-    my $string-with-pod = q:to/EOH/;
-
-This ordinary paragraph introduces a code block:
-
-EOH
-
-    say load( $string-with-pod ).perl;
+    
+    # Or ditch the scaffolding and use the string directly:
+    @pod = load-pod("This could be a comment with C<code>");
 
 DESCRIPTION
 ===========
