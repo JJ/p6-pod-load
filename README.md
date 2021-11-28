@@ -12,11 +12,14 @@ SYNOPSIS
 
     # Read a file handle.
     my $pod = load("file-with.pod6".IO);
-    say $pod.perl; # Process it as a Pod
+    say $pod.raku; # Process it as a Pod
 
     # Or use simply the file name
     my @pod = load("file-with.pod6");
-    say .perl for @pod;
+    say .raku for @pod;
+    
+    # Or a string
+    @pod = load("=begin pod\nThis could be a comment with C<code>\n=end pod");
 
     my $string-with-pod = q:to/EOH/;
 

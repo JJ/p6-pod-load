@@ -30,5 +30,7 @@ EOS
 ok( @pod, "String with comment returns something" );
 is( @pod[0].contents[0].contents[0].type, "Z", "Comment passed on successfully");
 
+@pod = load("=begin pod\nThis could be a comment with C<code>\n=end pod");
+ok( @pod[0].contents[0].contents.grep( { .?type ~~ 'C' } ), "There's a code block");
 
 done-testing;
