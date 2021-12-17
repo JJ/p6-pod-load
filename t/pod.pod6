@@ -1,10 +1,10 @@
-=begin pod :tag<perl6>
+=begin pod :tag<raku>
 
-=TITLE Perl 6 pod
+=TITLE Raku pod
 
-=SUBTITLE An easy-to-use markup language for documenting Perl modules and programs
+=SUBTITLE An easy-to-use markup language for documenting Raku modules and programs
 
-Perl 6 pod is an easy-to-use markup language. Pod can be used for
+Raku pod is an easy-to-use markup language. Pod can be used for
 writing language documentation, for documenting programs and modules, as
 well as for other types of document composition.
 
@@ -15,7 +15,7 @@ documentation.
 =begin code :lang<pod6>
 =begin pod
 
-A very simple Perl 6 Pod document
+A very simple Raku Pod document
 
 =end pod
 =end code
@@ -30,7 +30,7 @@ convenient for your particular documentation task.
 =head2 Delimited blocks
 
 Delimited blocks are bounded by C<=begin> and C<=end> markers, both of
-which are followed by a valid Perl 6 identifier, which is the
+which are followed by a valid Raku identifier, which is the
 C<typename> of the block. Typenames that are entirely lowercase (for
 example: C<=begin head1>) or entirely uppercase (for example: C<=begin
 SYNOPSIS>) are reserved.
@@ -46,7 +46,7 @@ Top Level Heading
 After the typename, the rest of the C<=begin> marker line is treated as
 configuration information for the block. This information is used in
 different ways by different types of blocks, but is always specified using
-Perl6-ish option pairs. That is, any of:
+raku-ish option pairs. That is, any of:
 
 =begin table
  Value is...       Specify with...           Or with...           Or with...
@@ -76,7 +76,7 @@ any whitespace is used inside the angle brackets.
 All option keys and values must, of course, be constants since Pod is a
 specification language, not a programming language. Specifically, option
 values cannot be closures. See Synopsis 2 for details of the various
-Perl 6 pair notations.
+Raku pair notations.
 
 The configuration section may be extended over subsequent lines by
 starting those lines with an C<=> in the first (virtual) column followed
@@ -167,7 +167,7 @@ sub search-in-seq( Int $end, Int $number ) {
 
 By using a matched pair of parenthesis constructs such as C<()> or C<«»> the
 comments can extend multiple lines. This format, however, will not translate to
-a multi-line display by C<perl6 -doc>.
+a multi-line display by C<raku -doc>.
 
 =head1 Block types
 
@@ -458,23 +458,23 @@ B<R>, B<T>, B<U>, B<V>, B<X>, and B<Z>.
 
 To format a text in bold enclose it in C<B< >>
 =for code :lang<pod6>
-Perl 6 is B<awesome>
+Raku is B<awesome>
 
-Perl 6 is B<awesome>
+Raku is B<awesome>
 
 =head2 Italic
 
 To format a text in italic enclose it in C<I< >>
 =for code :lang<pod6>
-Perl 6 is I<awesome>
+Raku is I<awesome>
 
-Perl 6 is I<awesome>
+Raku is I<awesome>
 
 =head2 Underlined
 
 To underline a text enclose it in C<U< >>
 =for code :lang<pod6>
-Perl 6 is U<awesome>
+Raku is U<awesome>
 
 Z<If used will bust Pod::To::BigPage>
 
@@ -496,12 +496,12 @@ The target location can be an URL (first example) or a local POD document (secon
 Local file names are relative to the base of the project, not the current document.
 
 =for code :lang<pod6>
-Perl 6 homepage L<https://perl6.org>
-L<Perl 6 homepage|https://perl6.org>
+Raku homepage L<https://raku.org>
+L<Raku homepage|https://raku.org>
 
-Perl 6 homepage L<https://perl6.org>
+Raku homepage L<https://raku.org>
 
-L<Perl 6 homepage|https://perl6.org>
+L<Raku homepage|https://raku.org>
 
 =for code :lang<pod6>
 Structure L</language/about#Structure>
@@ -584,9 +584,9 @@ A comment is text that is never rendered.
 
 To create a comment enclose it in C<Z< >>
 =for code :lang<pod6>
-Perl 6 is awesome Z<Of course it is!>
+Raku is awesome Z<Of course it is!>
 
-Perl 6 is awesome Z<Of course it is!>
+Raku is awesome Z<Of course it is!>
 
 =head2 Notes
 
@@ -594,9 +594,9 @@ Notes are rendered as footnotes.
 
 To create a note enclose it in C<N< >>
 =for code :lang<pod6>
-Perl 6 is multi-paradigmatic N<Supporting Procedural, Object Oriented, and Functional programming>
+Raku is multi-paradigmatic N<Supporting Procedural, Object Oriented, and Functional programming>
 
-Z<Perl 6 is multi-paradigmatic N<Supporting Procedural, Object Oriented, and Functional programming> >
+Z<Raku is multi-paradigmatic N<Supporting Procedural, Object Oriented, and Functional programming> >
 
 =head2 Keyboard input
 
@@ -639,23 +639,23 @@ Z<If used will bust Pod::To::BigPage>
 To include Unicode code points or HTML5 character references in a Pod document, enclose them in  C<E< >>
 
 C<E< >> can enclose a number, that number is treated as the decimal Unicode value for the desired code point.
-It can also enclose explicit binary, octal, decimal, or hexadecimal numbers using the Perl 6 notations for explicitly based numbers.
+It can also enclose explicit binary, octal, decimal, or hexadecimal numbers using the Raku notations for explicitly based numbers.
 
 =begin code :lang<pod6>
-Perl 6 makes considerable use of the E<171> and E<187> characters.
+Raku makes considerable use of the E<171> and E<187> characters.
 
-Perl 6 makes considerable use of the E<laquo> and E<raquo> characters.
+Raku makes considerable use of the E<laquo> and E<raquo> characters.
 
-Perl 6 makes considerable use of the E<0b10101011> and E<0b10111011> characters.
+Raku makes considerable use of the E<0b10101011> and E<0b10111011> characters.
 
-Perl 6 makes considerable use of the E<0o253> and E<0o273> characters.
+Raku makes considerable use of the E<0o253> and E<0o273> characters.
 
-Perl 6 makes considerable use of the E<0d171> and E<0d187> characters.
+Raku makes considerable use of the E<0d171> and E<0d187> characters.
 
-Perl 6 makes considerable use of the E<0xAB> and E<0xBB> characters.
+Raku makes considerable use of the E<0xAB> and E<0xBB> characters.
 =end code
 
-Perl 6 makes considerable use of the « and » characters.
+Raku makes considerable use of the « and » characters.
 
 =head2 Verbatim text
 
@@ -733,26 +733,26 @@ The indexed text can be empty, creating a "zero-width" index entry:
 
 =head2 HTML
 
-In order to generate HTML from Pod, you need the L<Pod::To::HTML module|https://github.com/perl6/Pod-To-HTML>.
+In order to generate HTML from Pod, you need the L<Pod::To::HTML module|https://github.com/raku/Pod-To-HTML>.
 
 If it is not already installed, install it by running the following command:
 C<zef install Pod::To::HTML>
 
 Using the terminal run the following command:
 =begin code :lang<shell>
-perl6 --doc=HTML input.pod6 > output.html
+raku --doc=HTML input.pod6 > output.html
 =end code
 
 =head2 Markdown
 
-In order to generate Markdown from Pod, you need the L<Pod::To::Markdown module|https://github.com/softmoth/perl6-pod-to-markdown>.
+In order to generate Markdown from Pod, you need the L<Pod::To::Markdown module|https://github.com/softmoth/raku-pod-to-markdown>.
 
 If it is not already installed, install it by running the following command:
 C<zef install Pod::To::Markdown>
 
 Using the terminal run the following command:
 =begin code :lang<shell>
-perl6 --doc=Markdown input.pod6 > output.md
+raku --doc=Markdown input.pod6 > output.md
 =end code
 
 =head2 Text
@@ -762,13 +762,13 @@ C<Pod::To::Text> module.
 
 Using the terminal, run the following command:
 =begin code :lang<shell>
-perl6 --doc=Text input.pod6 > output.txt
+raku --doc=Text input.pod6 > output.txt
 =end code
 
 You can omit the C<=Text> portion:
 
 =begin code :lang<shell>
-perl6 --doc input.pod6 > output.txt
+raku --doc input.pod6 > output.txt
 =end code
 
 You can even embed Pod directly in your program and add the
@@ -786,7 +786,7 @@ Now C<myprogram --man> will output your Pod rendered as a man page.
 
 =head1 Accessing Pod
 
-In order to access Pod documentation from within a Perl 6 program
+In order to access Pod documentation from within a Raku program
 it is required to use the special C<=> twigil, as documented
 in the L<variables section|/language/variables#The_=_twigil>.
 
@@ -826,4 +826,4 @@ Pod::Heading.new(level => 2, config => {}, contents => [Pod::Block::Para.new(con
 Pod::Block::Para.new(config => {}, contents => ["Here some text for the subsection."]);
 =end pod
 
-# vim: expandtab softtabstop=4 shiftwidth=4 ft=perl6
+# vim: expandtab softtabstop=4 shiftwidth=4 ft=raku
