@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: jjmerelo/raku-test:latest
+      options: --user 1001
     steps:
       - name: Test
         run: |
