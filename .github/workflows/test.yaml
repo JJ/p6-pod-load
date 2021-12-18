@@ -8,9 +8,7 @@ jobs:
       options: --user 1001
     steps:
       - name: Test
-        run: |
-          whoami
-          ls -alt /__w
+        run: ls -alt /__w
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install modules
