@@ -4,7 +4,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container:
-      image: jjmerelo/alpine-raku:gha-2021.10
+      image: jj/gha-raku:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
