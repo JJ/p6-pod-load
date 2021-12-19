@@ -12,10 +12,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Install modules
         run: |
-          raku -e 'say $*REPO.repo-chain'
           which zef
-          zef install --verbose --deps-only .
-
+          zef --version
       - name: Test
         run: zef --debug test .
 
