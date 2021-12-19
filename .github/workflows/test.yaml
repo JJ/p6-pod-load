@@ -14,7 +14,6 @@ jobs:
           HOME=/home/raku && zef install --verbose --deps-only .
 
       - name: Test
-        run: |
-          HOME=/home/raku && zef --debug test .
+        run: zef --debug test .
 
 
