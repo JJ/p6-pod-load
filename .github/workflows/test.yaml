@@ -3,6 +3,8 @@ on: [ push, pull_request ]
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      packages: read
     container:
       image: ghcr.io/jj/gha-raku:latest
       credentials:
