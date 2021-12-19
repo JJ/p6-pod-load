@@ -11,9 +11,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install modules
+        env:
+          HOME: /home/raku
         run: |
           which zef
-          zef --version
+          HOME=/home/raku zef --version
       - name: Test
         run: zef --debug test .
 
