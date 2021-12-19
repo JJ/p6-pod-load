@@ -13,6 +13,8 @@ jobs:
       - name: Install modules
         run: zef install --deps-only .
       - name: Test
-        run: zef --debug test .
+        run: |
+          whoami
+          zef --debug test .
 
 
