@@ -17,7 +17,7 @@ jobs:
           which zef
           id `whoami`
           ls -alt /home/raku/.raku
-          raku -e "say $*REPO.repo-chain"
+          raku -e 'say $*REPO.repo-chain'
           zef install --verbose --deps-only .
 
       - name: Test
