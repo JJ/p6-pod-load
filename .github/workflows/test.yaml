@@ -6,7 +6,7 @@ jobs:
     permissions:
       packages: read
     container:
-      image: ghcr.io/jj/gha-raku:latest
+      image: ghcr.io/jj/gha-raku
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
