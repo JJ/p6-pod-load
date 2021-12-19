@@ -7,17 +7,14 @@ jobs:
       packages: read
     container:
       image: ghcr.io/jj/gha-raku-zef
+    env:
+      HOME: /home/raku
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install modules
-        env:
-          HOME: /home/raku
-        run: |
-          zef install .
+        run: zef install .
       - name: Test
-        env:
-          HOME: /home/raku
         run: zef --debug test .
 
 
