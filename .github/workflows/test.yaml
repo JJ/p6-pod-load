@@ -16,8 +16,9 @@ jobs:
           whoami
           which zef
           id `whoami`
+          ls -alt /home/raku/.raku
           zef install --deps-only .
-          echo $PATH
+
       - name: Test
         run: |
           zef --debug test .
