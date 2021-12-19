@@ -1,11 +1,10 @@
-name: "Test"
+name: "Test in a Raku container"
 on: [ push, pull_request ]
 jobs:
   test:
     runs-on: ubuntu-latest
     container:
-      image: jjmerelo/raku-test:latest
-      options: --user 1001
+      image: jjmerelo/alpine-raku:gha-2021.10
     steps:
       - name: Test
         run: ls -alt /__w
