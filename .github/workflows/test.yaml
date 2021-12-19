@@ -14,9 +14,10 @@ jobs:
         env:
           HOME: /home/raku
         run: |
-          which zef
-          HOME=/home/raku zef --version
+          zef install .
       - name: Test
+        env:
+          HOME: /home/raku
         run: zef --debug test .
 
 
