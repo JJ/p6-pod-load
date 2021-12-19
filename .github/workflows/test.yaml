@@ -20,7 +20,7 @@ jobs:
           ls -alt /github/home/.raku
           ls -alt /github/home/raku/.raku
           raku -e 'say $*REPO.repo-chain'
-          zef install --verbose --deps-only .
+          HOME=/home/raku && raku -e 'say $*REPO.repo-chain' && zef install --verbose --deps-only .
 
       - name: Test
         run: |
