@@ -6,17 +6,15 @@ jobs:
     container:
       image: jjmerelo/alpine-raku:gha-2021.10
     steps:
-      - name: Test
-        run: raku -e 'say $*REPO.repo-chain'
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install modules
         run: |
           raku -e 'say $*REPO.repo-chain'
-          HOME=/home/raku && raku -e 'say $*REPO.repo-chain' && zef install --verbose --deps-only .
+          HOME=/home/raku && zef install --verbose --deps-only .
 
       - name: Test
         run: |
-          zef --debug test .
+          HOME=/home/raku && zef --debug test .
 
 
