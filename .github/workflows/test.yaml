@@ -9,7 +9,7 @@ jobs:
       image: ghcr.io/jj/gha-raku:latest
       credentials:
         username: ${{ github.actor }}
-        password: ${{ secrets.GHCR_TOKEN }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
