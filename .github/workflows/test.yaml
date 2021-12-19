@@ -11,10 +11,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install modules
-        run: zef install --deps-only .
+        run: |
+          pwd
+          whoami
+          zef install --deps-only .
       - name: Test
         run: |
-          whoami
           zef --debug test .
 
 
