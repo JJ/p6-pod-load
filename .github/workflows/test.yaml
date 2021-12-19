@@ -7,7 +7,7 @@ jobs:
       image: jjmerelo/alpine-raku:gha-2021.10
     steps:
       - name: Test
-        run: ls -alt /__w
+        run: raku -e 'say $*REPO.repo-chain'
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install modules
