@@ -13,7 +13,8 @@ jobs:
       - name: Install modules
         run: |
           raku -e 'say $*REPO.repo-chain'
-          HOME=/home/raku && zef install --verbose --deps-only .
+          which zef
+          zef install --verbose --deps-only .
 
       - name: Test
         run: zef --debug test .
