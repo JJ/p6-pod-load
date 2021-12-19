@@ -14,7 +14,10 @@ jobs:
         run: |
           pwd
           whoami
+          which zef
+          id `whoami`
           zef install --deps-only .
+          echo $PATH
       - name: Test
         run: |
           zef --debug test .
