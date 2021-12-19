@@ -12,13 +12,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Install modules
         run: |
-          pwd
-          whoami
-          which zef
-          id `whoami`
-          ls -alt /home/raku/.raku
-          ls -alt /github/home/.raku
-          ls -alt /github/home/raku/.raku
           raku -e 'say $*REPO.repo-chain'
           HOME=/home/raku && raku -e 'say $*REPO.repo-chain' && zef install --verbose --deps-only .
 
