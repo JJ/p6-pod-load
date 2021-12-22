@@ -17,10 +17,10 @@ SYNOPSIS
     # Or use simply the file name
     my @pod = load("file-with.pod6");
     say .raku for @pod;
-    
+
     # Or a string
     @pod = load("=begin pod\nThis could be a comment with C<code>\n=end pod");
-    
+
     # Or ditch the scaffolding and use the string directly:
     @pod = load-pod("This could be a comment with C<code>");
 
