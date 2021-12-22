@@ -16,5 +16,8 @@ jobs:
         run: zef install .
       - name: Test
         run: zef --debug test .
+      - name: Use Raku to run
+        shell: raku {0}
+        run: say $*REPO.repo-chain
 
 
