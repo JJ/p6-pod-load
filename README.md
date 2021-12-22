@@ -1,4 +1,6 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/lq9rqjq6hljdfqw4?svg=true)](https://ci.appveyor.com/project/JJ/p6-pod-load)
+[![Build
+status](https://ci.appveyor.com/api/projects/status/lq9rqjq6hljdfqw4?svg=true)](https://ci.appveyor.com/project/JJ/p6-pod-load) 
+[![Test in a Raku container](https://github.com/JJ/p6-pod-load/actions/workflows/test.yaml/badge.svg)](https://github.com/JJ/p6-pod-load/actions/workflows/test.yaml)
 
 NAME
 ====
