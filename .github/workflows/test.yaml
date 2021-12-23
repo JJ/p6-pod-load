@@ -24,9 +24,8 @@ jobs:
         shell: raku {0}
         run: |
           use Text::Chart;
-          my $commits = %*ENV<COMMITS>-1;
-          my @changed-files = qx<git log --oneline --shortstat -$commits>
-                  .lines.grep( /file/ )
+          my @changed-files = qx<git log --oneline --shortstat -$COMMITS>
+                  .lines.grep( /file/ ).pop
                   .map( * ~~ /$<files>=(\d+) \s+ file/ )
                   .map: +*<files>;
           say @changed-files;
