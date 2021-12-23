@@ -25,10 +25,12 @@ jobs:
         run: |
           use Text::Chart;
           my @changed-files = qx<git log --oneline --shortstat -$COMMITS>
-                  .lines.grep( /file/ ).list.pop
+                  .lines.grep( /file/ )
                   .map( * ~~ /$<files>=(\d+) \s+ file/ )
                   .map: +*<files>;
-          say @changed-files;
-          say vertical( :max( @changed-files.max), @changed-files );
+          say vertical(
+            :max( @changed-files[0..*-1].max),
+            @changed-files[0..*-1]
+          );
 
 
