@@ -29,8 +29,8 @@ jobs:
                   .map( * ~~ /$<files>=(\d+) \s+ file/ )
                   .map: +*<files>;
           say vertical(
-            :max( @changed-files[0..*-1].max),
-            @changed-files[0..*-1]
+            :max( @changed-files[0..*-2].max),
+            @changed-files[0..*-2]
           );
 
 
