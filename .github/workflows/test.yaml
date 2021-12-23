@@ -25,7 +25,7 @@ jobs:
         run: |
           use Text::Chart;
           my @changed-files = qx<git log --oneline --shortstat -$COMMITS>
-                  .lines.grep( /file/ )[0..*-1]
+                  .lines.grep( /file/ ).list.pop
                   .map( * ~~ /$<files>=(\d+) \s+ file/ )
                   .map: +*<files>;
           say @changed-files;
