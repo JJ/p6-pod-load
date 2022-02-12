@@ -11,7 +11,15 @@ SYNOPSIS
 ========
 
     use Pod::Load;
+    use X::Pod::Load::SourceErrors;
 
+    # Try to parse a string
+    say pod-load(<<EOP).raku;
+    =head1 Header
+    
+    =head2 Another header
+    EOP
+    
     # Read a file handle.
     my $pod = load("file-with.pod6".IO);
     say $pod.raku; # Process it as a Pod
@@ -25,6 +33,8 @@ SYNOPSIS
 
     # Or ditch the scaffolding and use the string directly:
     @pod = load-pod("This could be a comment with C<code>");
+    
+    # If there's an error, it will throw X::Pod::Load::SourceErrors
 
 DESCRIPTION
 ===========
