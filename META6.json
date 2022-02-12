@@ -1,5 +1,5 @@
 {
-    "auth": "zef:jjmerelo",
+    "auth": "zef:JJMERELO",
     "authors" : ["JJ Merelo"],
     "depends" : [ "File::Temp" ],
     "test-depends": [
