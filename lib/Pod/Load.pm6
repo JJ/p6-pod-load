@@ -1,5 +1,5 @@
 use v6.c;
-unit module Pod::Load:ver<0.6.0>;
+unit module Pod::Load:ver<0.7.0>;
 
 use X::Pod::Load::SourceErrors;
 
