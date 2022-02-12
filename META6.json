@@ -1,15 +1,14 @@
 {
     "auth": "zef:JJMERELO",
-    "authors" : [
-	"JJ Merelo"
-    ],
+    "authors" : ["JJ Merelo"],
     "depends" : [ "File::Temp" ],
     "description" : "Loads and compiles the Pod documentation of an external file",
     "license" : "Artistic-2.0",
     "name" : "Pod::Load",
     "perl" : "6.c",
     "provides" : {
-	"Pod::Load" : "lib/Pod/Load.pm6"
+	  "Pod::Load" : "lib/Pod/Load.pm6",
+      "X::Pod::Load::SourceErrors": "lib/X/Pod/Load/SourceErrors.rakumod"
     },
     "resources" : [
 	  "examples/pod-load-clean.pod6",

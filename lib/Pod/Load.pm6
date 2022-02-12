@@ -1,6 +1,8 @@
 use v6.c;
 unit module Pod::Load:ver<0.6.0>;
 
+use X::Pod::Load::SourceErrors;
+
 =begin pod
 
 =head1 NAME
@@ -59,6 +61,11 @@ it under the Artistic License 2.0.
 use MONKEY-SEE-NO-EVAL;
 use File::Temp; # For tempdir below
 
+#| Compiles a file from source
+multi sub load ( IO::Path $io ) is export {
+    load( $io.path )
+}
+
 #| The string here should be valid Pod markup, without the enclosing stuff
 sub load-pod( Str $string ) is export {
     return load(qq:to/EOP/);
@@ -100,19 +107,8 @@ multi sub load( Str $file where .IO.e ) {
             );
     CATCH {
         default {
-            X::LoadPod::SourceErrors.new(:error( .message.Str )).throw
+            X::Pod::Load::SourceErrors.new(:error( .message.Str )).throw
         }
     }
     nqp::atkey($handle.unit, '$=pod')
-}
-
-#| Exception representing errors in the source of any kind
-class X::LoadPod::SourceErrors is Exception {
-    has $.error;
-    method message { $!error }
-}
-
-#| Compiles a file from source
-multi sub load ( IO::Path $io ) is export {
-    load( $io.path )
 }
