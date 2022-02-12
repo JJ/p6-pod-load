@@ -2,6 +2,10 @@
     "auth": "zef:jjmerelo",
     "authors" : ["JJ Merelo"],
     "depends" : [ "File::Temp" ],
+    "test-depends": [
+        "Test",
+        "Test::META"
+    ],
     "description" : "Loads and compiles the Pod of an external file or string",
     "license" : "Artistic-2.0",
     "name" : "Pod::Load",
