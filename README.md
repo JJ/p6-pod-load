@@ -29,7 +29,12 @@ SYNOPSIS
 DESCRIPTION
 ===========
 
-Pod::Load is a module with a simple task: obtain the documentation of an external file in a standard, straighworward way. Its mechanism is inspired by [`Pod::To::BigPage`](https://github.com/perl6/perl6-pod-to-bigpage), from where the code to use the cache is taken from.
+Pod::Load is a module with a simple task: obtain the documentation of an
+external file in a standard, straighworward way.
+
+Its mechanism was originally inspired by
+[`Pod::To::BigPage`](https://github.com/perl6/perl6-pod-to-bigpage), from where
+the code to use the cache was taken from.
 
 ### multi sub load
 
