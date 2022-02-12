@@ -9,7 +9,7 @@ constant %tests = {
     "class.pm6"  => /Hello/,
     "multi.pod6" => /mortals/,
     "can.p6"     => /1/,
-    "pod.pod6"   => /Unordered/
+    "pod.pod6"   => /Unordered/,
 };
 
 sub do-the-test() {

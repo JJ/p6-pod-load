@@ -61,11 +61,6 @@ it under the Artistic License 2.0.
 use MONKEY-SEE-NO-EVAL;
 use File::Temp; # For tempdir below
 
-#| Compiles a file from source
-multi sub load ( IO::Path $io ) is export {
-    load( $io.path )
-}
-
 #| The string here should be valid Pod markup, without the enclosing stuff
 sub load-pod( Str $string ) is export {
     return load(qq:to/EOP/);
@@ -111,4 +106,9 @@ multi sub load( Str $file where .IO.e ) {
         }
     }
     nqp::atkey($handle.unit, '$=pod')
+}
+
+#| Compiles a file from source
+multi sub load ( IO::Path $io ) is export {
+    load( $io.path )
 }
