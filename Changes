@@ -1,3 +1,7 @@
+2022-02-12  jmerelo  <jmerelo@princess-carolyn>
+
+	* lib/X/Pod/Load/SourceErrors.rakumod: For new version, exceptions extracted and taken out.
+
 2021-11-28  jmerelo  <jmerelo@princess-carolyn>
 
 	* lib/Pod/Load.pm6 (Pod): Adds pod-load to address what was actually a bug in the documentation (but is actually doable). Thanks to Tom Browder @tbrowder for the bug report.
@@ -16,7 +20,7 @@
 
 2019-04-13  Juan J. merelo  <jmerelo@penny>
 
-	* lib/Pod/Load.pm6 (Pod): Fixes error with loading scripts; use v6 failed and besides the output at the end clashed with the module enclosure we use. 
+	* lib/Pod/Load.pm6 (Pod): Fixes error with loading scripts; use v6 failed and besides the output at the end clashed with the module enclosure we use.
 
 2019-03-24  Juan J. merelo  <jmerelo@penny>
 
