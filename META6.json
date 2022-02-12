@@ -1,8 +1,8 @@
 {
-    "auth": "zef:JJMERELO",
+    "auth": "zef:jjmerelo",
     "authors" : ["JJ Merelo"],
     "depends" : [ "File::Temp" ],
-    "description" : "Loads and compiles the Pod documentation of an external file",
+    "description" : "Loads and compiles the Pod of an external file or string",
     "license" : "Artistic-2.0",
     "name" : "Pod::Load",
     "perl" : "6.c",
