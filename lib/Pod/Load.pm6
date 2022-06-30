@@ -91,7 +91,7 @@ multi sub load( Str $file where .IO.e ) {
     use nqp;
     my $cache-path = tempdir;
     my $precomp-repo = CompUnit::PrecompilationRepository::Default.new(
-            :store(CompUnit::PrecompilationStore::File.new(:prefix($cache-path.IO))),
+            :store(CompUnit::PrecompilationStore::FileSystem.new(:prefix($cache-path.IO))),
             );
     my $handle = $precomp-repo.try-load(
             CompUnit::PrecompilationDependency::File.new(
