@@ -15,7 +15,7 @@
     "Test::META"
   ],
   "provides": {
-    "Pod::Load": "lib/Pod/Load.pm6",
+    "Pod::Load": "lib/Pod/Load.rakumod",
     "X::Pod::Load::SourceErrors": "lib/X/Pod/Load/SourceErrors.rakumod"
   },
   "resources": [
