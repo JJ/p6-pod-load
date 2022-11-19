@@ -1,24 +1,31 @@
 {
-    "auth": "zef:jjmerelo",
-    "authors" : ["JJ Merelo"],
-    "depends" : [ "File::Temp" ],
-    "test-depends": [
-        "Test",
-        "Test::META"
-    ],
-    "description" : "Loads and compiles the Pod of an external file or string",
-    "license" : "Artistic-2.0",
-    "name" : "Pod::Load",
-    "perl" : "6.c",
-    "provides" : {
-	  "Pod::Load" : "lib/Pod/Load.pm6",
-      "X::Pod::Load::SourceErrors": "lib/X/Pod/Load/SourceErrors.rakumod"
-    },
-    "resources" : [
-	  "examples/pod-load-clean.pod6",
-	  "examples/README.md"
-    ],
-    "source-url" : "https://github.com/JJ/p6-pod-load.git",
-    "tags" : ["Pod","Documentation" ],
-    "version" : "0.7.1"
+  "name": "Pod::Load",
+  "description": "Loads and compiles the Pod of an external file or string",
+  "version": "0.7.2",
+  "perl": "6.c",
+  "authors": [
+    "JJ Merelo"
+  ],
+  "auth": "zef:jjmerelo",
+  "depends": [
+    "File::Temp"
+  ],
+  "test-depends": [
+    "Test",
+    "Test::META"
+  ],
+  "provides": {
+    "Pod::Load": "lib/Pod/Load.pm6",
+    "X::Pod::Load::SourceErrors": "lib/X/Pod/Load/SourceErrors.rakumod"
+  },
+  "resources": [
+    "examples/pod-load-clean.pod6",
+    "examples/README.md"
+  ],
+  "license": "Artistic-2.0",
+  "tags": [
+    "Pod",
+    "Documentation"
+  ],
+  "source-url": "https://github.com/JJ/p6-pod-load.git"
 }
