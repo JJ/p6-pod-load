@@ -84,25 +84,11 @@ Do the usual:
 
 to install this if you've made any modification.
 
-INSTRUCTIONS
-============
-
-This is mainly a reminder to myself, although it can help you if you create a distribution just like this one.
-
-Write:
-
-    export VERSION=0.x.x
-
-And
-
-    make dist
-
-To create a tar file ready for CPAN.
 
 AUTHOR
 ======
 
-JJ Merelo <jjmerelo@gmail.com>
+JJ Merelo <jjmerelo@gmail.com>, with help from [Richard Hainsworth](https://github.com/finanalyst)
 
 COPYRIGHT AND LICENSE
 =====================
