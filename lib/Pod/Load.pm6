@@ -1,5 +1,5 @@
 use v6.c;
-unit module Pod::Load:ver<0.7.1>;
+unit module Pod::Load:ver<0.7.2>;
 
 use X::Pod::Load::SourceErrors;
 
@@ -86,12 +86,14 @@ multi sub load ( Str $string ) is export {
     return @pod;
 }
 
+my constant CUPSFS = ::("CompUnit::PrecompilationStore::File" ~ ("System","").first({ ::("CompUnit::PrecompilationStore::File$_") !~~ Failure }));
+
 #| If it's an actual filename, loads a file and returns the pod
 multi sub load( Str $file where .IO.e ) {
     use nqp;
     my $cache-path = tempdir;
     my $precomp-repo = CompUnit::PrecompilationRepository::Default.new(
-            :store(CompUnit::PrecompilationStore::File.new(:prefix($cache-path.IO))),
+            :store(CUPSFS.new(:prefix($cache-path.IO))),
             );
     my $handle = $precomp-repo.try-load(
             CompUnit::PrecompilationDependency::File.new(
